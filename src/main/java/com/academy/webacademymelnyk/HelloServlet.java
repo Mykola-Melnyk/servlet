@@ -17,20 +17,17 @@ public class HelloServlet extends HttpServlet {
         response.setContentType("text/html");
 
         HttpSession session = request.getSession();
-        session.setAttribute("name", request.getParameter("name"));
-        System.out.println("HelloServlet.doGet");
+        String name = (String) session.getAttribute("name");
+
         System.out.println(request.getParameter("name"));
-        System.out.println(request.getParameter("surname"));
         System.out.println("Name attribute: " + session.getAttribute("name"));
 
 
-        String name = request.getParameter("name");
-        String surname = request.getParameter("surname");
 
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + " " + session.getAttribute("name") + " " + surname + "!" + "</h1>");
+        out.println("<h1>" + message + " " + name + "!" + "</h1>");
         out.println("</body></html>");
     }
 
